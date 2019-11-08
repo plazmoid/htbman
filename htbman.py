@@ -2,7 +2,7 @@
 from argparse import ArgumentParser
 from datetime import datetime
 from pathlib import Path
-from termcolor import colored
+from utils import ask
 import subprocess
 import sys
 
@@ -12,23 +12,6 @@ import sys
 # get the name and IP of the box from HTB
 # when the box is rooted, move all in db, gather all info (flags, utilities, compressed files)
 # some kind of api?
-
-class tty_format:
-    QUESTION = colored('[?]', 'yellow')
-    INFO = colored('[~]', 'blue')
-    WARNING = colored('[!]', 'magenta')
-    ERROR = colored('[X]', 'red')
-
-
-def info(text: str) -> None:
-    print(f"{tty_format.INFO} {text}")
-
-def ask(que: str, answers: tuple = ('y', 'n')) -> str:
-    while True:
-        print(f"{tty_format.QUESTION} {que} [{'/'.join(answers)}]")
-        answer = str(input())
-        if answer in answers:
-            return answer
         
 class HTBox:
 
